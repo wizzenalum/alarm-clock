@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>your clock</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <main id="time">
+      <div class="clock">
+        <!-- div where my clock reside which has hour hand, minute hand, second hand and the timings.-->
+        <img src="./src/clock.png" class="clock-part" />
+        <img src="./src/hour.png" id = "hour-hand"class="clock-part"/>
+        <img src="./src/minute.png" id = "min-hand"class="clock-part"/>
+        <img src="./src/second.png" id = "sec-hand"class="clock-part"/>
+      </div>
+      <!-- all the elements that used to set alarm and show it -->
+      <div id="alarm-container">
+        <h2>Set Alarm </h2>
+        <div id="set-alarm">
+          <!-- alarm input by +,- buttons and by typing -->
+            <!-- hour input/ -->
+          <div class="number-input">
+            <p>Hour</p>
+            <button
+              onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+              class="plus"
+            ></button>
+            <input class="quantity" min="0" max="23" name="quantity" value="00" type="number"/>
+            <button
+              id="test"
+              onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+            ></button>
+          </div>
+          <!-- minut input -->
+          <div class="number-input">
+            <p>Minute</p>
+            <button
+              onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+              class="plus"
+            ></button>
+            <input class="quantity" min="0" max="59" name="quantity" value="00" type="number" />
+            <button
+              onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+            ></button>
+          </div>
+          <!-- second input -->
+          <div class="number-input">
+            <p>Minute</p>
+            <button
+              onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+              class="plus"
+            ></button>
+            <input class="quantity" min="0" max="59" name="quantity" value="00" type="number" />
+            <button
+              onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+            ></button>
+          </div>
+          <!-- alarm submit button -->
+          <button id="alarm-btn">
+            <img src="https://img.icons8.com/dotty/80/000000/alarm-add.png" />
+          </button>
+        </div>
+        <!-- list of the the alarms that a person set -->
+        <div id="alarm-list">
+          
+          <div class="alarm">
+            <span>23</span><span>23</span><span>34</span
+            ><span class="fas fa-trash"></span>
+          </div>
+          <div class="alarm">
+            <span>23</span><span>23</span><span>34</span
+            ><span class="fas fa-trash"></span>
+          </div>
+          <div class="alarm">
+            <span>23</span><span>23</span><span>34</span
+            ><span class="fas fa-trash"></span>
+          </div>
+          <div class="alarm">
+            <span>23</span><span>23</span><span>34</span
+            ><span class="fas fa-trash"></span>
+          </div>
+          <div class="alarm">
+            <span>23</span><span>23</span><span>34</span
+            ><span class="fas fa-trash"></span>
+          </div>
+
+          <div class="alarm">
+            <span>23</span><span>23</span><span>34</span
+            ><span class="fas fa-trash"></span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./scripts/index.js" type="module"></script>
+  </body>
+</html>
