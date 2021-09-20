@@ -18,7 +18,7 @@ let alarmList = document.getElementById("alarm-list");
 
 // this function will create list list of all the alarms that stored in clock object
 const createList = function (list) {
-  let content = "";
+  let content = ``;
   for (let i = 0; i < list.length; i++) {
     let cur_time = new Date();
 
@@ -26,8 +26,8 @@ const createList = function (list) {
     // first line showing the time of third line showing the option to delete alarm.
     content += `<div class="alarm">
           <span>${list[i][0]}</span><span>${list[i][1]}</span>   
-          <span></span
-          ><span id="${"listid-" + i}" class=" delete fas fa-trash"></span>
+          <span>${list[i][2]}</span>
+          <span id="${"listid-" + i}" class=" delete fas fa-trash"></span>
         </div>`;
   }
   return content;

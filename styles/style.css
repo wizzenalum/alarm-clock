@@ -1,6 +1,8 @@
 /* removing default margin and paddings */
 html{
   margin: 0px;
+  font-size: 1rem;
+  color: rgb(36, 36, 36);
 }
 body {
   box-sizing: border-box;
@@ -73,7 +75,7 @@ main {
 
 
 #alarm-container {
-  padding: 20px;
+  padding: 20px,10px;
   display: grid;
   gap: 20px;
   grid-template-columns: 1fr;
@@ -85,10 +87,11 @@ main {
 /* ********* styling the alarm setting section */
 #set-alarm {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr ;
   grid-auto-flow: column;
-  gap: 5px;
   align-items: center;
+  width: 100%;
+  max-width: 300px;
 }
 
 /* hiding :defaults for number input */
@@ -121,21 +124,23 @@ input[type="number"]::-webkit-outer-spin-button {
   border: none;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
+  width: 1.5em;
+  height: 1.5em;
   cursor: pointer;
   margin: 0;
   position: relative;
-  font-size: 3rem;
+  font-size: 1em;
   overflow: hidden;
+  border-radius: 50%;
 }
 
 /* hover and active action for plus and minus buttons */
 .number-input button:hover {
-  box-shadow: 0 0 2px 2px rgba(96, 67, 100, 0.322);
+  transform: scale(.8);
+  /* box-shadow: 0 0 5px 5px rgba(96, 67, 100, 0.322); */
 }
 .number-input button:active {
-  box-shadow: none;
+  transform: none;
 }
 
 /* crating the plus and minus button */
@@ -143,27 +148,30 @@ input[type="number"]::-webkit-outer-spin-button {
 .number-input button:nth-child(2):before {
   content: "";
   display: inline-block;
-  width: 30px;
-  height: 20px;
-  transform: translate(0%, -80%);
-  border-bottom: 5px solid magenta;
+  width: 1.5em;
+  height: 1.5em;
+  transform: translate(-.25em, -.9em);
+  border-bottom: .15em solid magenta;
 }
 .number-input button:nth-child(2):after {
-  transform: rotate(90deg) translate(-225%, -43%);
+  transform: rotate(90deg) translate(-2em, -.53em);
 }
 
 .number-input input[type="number"] {
   font-family: sans-serif;
-  max-width: 5rem;
-  border: solid #ddd;
-  border-width: 0 2px;
-  font-size: 2rem;
-  height: 3rem;
+  max-width: 2em;
+  border:none;
+  /* border-width: 0 2px; */
+  font-size: 1.5em;
+  height: 1.5em;
   font-weight: bold;
   text-align: center;
   background-color: transparent;
 }
-
+.number-input :first-child{
+  font-size: .8em;
+  padding-bottom: 2px;
+}
 /* styling the set ** alarm button**  */
 #set-alarm > button {
   justify-self: end;
@@ -184,6 +192,8 @@ input[type="number"]::-webkit-outer-spin-button {
 /* styling the ** LIST ** which shows all the alarms to user */
 #alarm-list {
   height: 100vh;
+  max-width: 300px;
+  width: 100%;
 }
 .alarm {
   display: grid;
@@ -191,9 +201,10 @@ input[type="number"]::-webkit-outer-spin-button {
   grid-auto-flow: column;
   gap: 10px;
   place-content: center center;
-  width: 300px;
+  width: 100%;
   height: 3em;
-  box-shadow: 0 0 2px 2px wheat;
+
+  box-shadow: 0 0 2px 2px rgba(245, 222, 179, 0.61);
   z-index: 10;
   margin-bottom: 10px;
   /* height: 2em; */
