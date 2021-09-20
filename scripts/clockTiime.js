@@ -30,7 +30,8 @@ class Clock {
     this.hourAngDiff = 0;
     this.minAngDiff = 0;
     this.secAngDiff = 0;
-    this.alarmList = [[22, 30, 20]];
+    this.alarmList = [];
+    this.alarmId = 0;
   }
   getTime() {
     let currentTime = new Date();
@@ -119,7 +120,15 @@ class Clock {
     // time in array string or Date.
     let [hour, min, sec, check] = this.breakTheTime(time);
     if (check) {
-      this.alarmList.push([hour, min, sec]);
+      let id = 0, len = this.alarmList.length;
+      for(;id<len;id++){
+        let [alarmHour,alarmMin,alarmSec] = this.alarmList[id]
+        if(alarmHour>hour ||(alarmHour==hour && alarmMin>min) || (alarmHour==hour && alarmMin==min && alarmSec>=sec)){
+          this.alarmList.splice(id,0,[hour,min,sec]);
+          return true;
+        }
+      }
+      if(id== len) this.alarmList.push([hour, min, sec]);
       return true;
     }
     return false;
@@ -133,10 +142,11 @@ class Clock {
     let time = new Date()
     let hour = time.getHours()
     let min = time.getMinutes()
+    let sec = time.getSeconds()
     for(let id=0;id< this.alarmList.length; id++){
       console.log(this.alarmList[id])
-      let [alarmHour,alarmMin,x] = this.alarmList[id]
-      if(alarmHour==hour && alarmMin == min){
+      let [alarmHour,alarmMin,alarmSec] = this.alarmList[id]
+      if(alarmHour===hour && alarmMin === min && alarmSec === sec){
         return id;
       }
     }

@@ -43,7 +43,7 @@ for (let btn of deleteBtn) {
 
 // adding the alarm to the application
 let handleAlarmBtn = function (event) {
-  clock.setAlarm([hour.value, min.value,0]);
+  clock.setAlarm([hour.value, min.value,sec.value]);
   alarmList.innerHTML = createList(clock.alarmList);
   addDeleteEventListeners();
 };
@@ -76,12 +76,10 @@ let id = setInterval(() => {
   hourHand.style.transform = `rotate(${angles[0]}deg)`;
   minHand.style.transform = `rotate(${angles[1]}deg)`;
   secHand.style.transform = `rotate(${angles[2]}deg)`;
-}, 1000);
-
-let alarm_alert_interval_id = setInterval(()=>{
   let id = clock.checkAlarm();
   if(id.constructor==Number){
     alert(`alarm for ${clock.alarmList[id][0]}:${clock.alarmList[id][1]}`)
   }
-},30000)
+}, 1000);
+
 
