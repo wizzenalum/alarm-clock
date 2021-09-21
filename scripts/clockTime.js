@@ -123,7 +123,7 @@ class Clock {
       let id = 0, len = this.alarmList.length;
       for(;id<len;id++){
         let [alarmHour,alarmMin,alarmSec] = this.alarmList[id]
-        if(alarmHour>hour ||(alarmHour==hour && alarmMin>min) || (alarmHour==hour && alarmMin==min && alarmSec>=sec)){
+        if(alarmHour*3600+alarmMin*60+alarmSec>=hour*3600+min*60+sec){
           this.alarmList.splice(id,0,[hour,min,sec]);
           return true;
         }
@@ -144,7 +144,7 @@ class Clock {
     let min = time.getMinutes()
     let sec = time.getSeconds()
     for(let id=0;id< this.alarmList.length; id++){
-      console.log(this.alarmList[id])
+      // console.log(this.alarmList[id])
       let [alarmHour,alarmMin,alarmSec] = this.alarmList[id]
       if(alarmHour===hour && alarmMin === min && alarmSec === sec){
         return id;

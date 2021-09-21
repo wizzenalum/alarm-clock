@@ -1,4 +1,4 @@
-import Clock from "./clockTiime.js";
+import Clock from "./clockTime.js";
 
 // creating a clock that is object and do everything whatever  i need from a clock.
 const clock = new Clock("hello");
@@ -19,9 +19,17 @@ let alarmList = document.getElementById("alarm-list");
 // this function will create list list of all the alarms that stored in clock object
 const createList = function (list) {
   let content = ``;
-  for (let i = 0; i < list.length; i++) {
-    let cur_time = new Date();
+  let time = new Date();
+  let hour = time.getHours();
+  let min = time.getMinutes();
+  let sec = time.getSeconds();
 
+  let alreadyAlarmed = []
+  for (let i = 0; i < list.length; i++) {
+    let [alarmHour,alarmMin,alarmSec] = list[i]
+    if(alarmHour*3600+alarmMin*60+alarmSec<=hour*3600+min*60+sec){
+      alreadyAlarmed.push(i)
+    }
 
     // first line showing the time of third line showing the option to delete alarm.
     content += `<div class="alarm">
@@ -30,7 +38,7 @@ const createList = function (list) {
           <span id="${"listid-" + i}" class=" delete fas fa-trash"></span>
         </div>`;
   }
-  return content;
+  return [content,alreadyAlarmed];
 };
 const addDeleteEventListeners = function(){
   const deleteBtn = document.querySelectorAll(".alarm>span:last-child");
@@ -44,7 +52,7 @@ for (let btn of deleteBtn) {
 // adding the alarm to the application
 let handleAlarmBtn = function (event) {
   clock.setAlarm([hour.value, min.value,sec.value]);
-  alarmList.innerHTML = createList(clock.alarmList);
+  render();
   addDeleteEventListeners();
 };
 
@@ -53,13 +61,20 @@ let handleAlarmBtn = function (event) {
 let handleDelete = function (event) {
   let id = event.target.id.substr(7);
   clock.removeAlarm(parseInt(id));
-  alarmList.innerHTML = createList(clock.alarmList);
+  render();
   addDeleteEventListeners();
 };
 
-
+const render = function(){
+  let [content,alreadyAlarmed] = createList(clock.alarmList);
+    alarmList.innerHTML = content;
+  let alarmTags = document.querySelectorAll('.alarm');
+  for(let id of alreadyAlarmed){
+    alarmTags[id].classList.add('alarmed')
+  }
+}
 // *** INITIALIZING the view by adding the eventlistners and saved list.
-alarmList.innerHTML = createList(clock.alarmList);
+render();
 
     // user actionabl Butoon of alarm
 const alarmBtn = document.getElementById("alarm-btn");
@@ -78,7 +93,8 @@ let id = setInterval(() => {
   secHand.style.transform = `rotate(${angles[2]}deg)`;
   let id = clock.checkAlarm();
   if(id.constructor==Number){
-    alert(`alarm for ${clock.alarmList[id][0]}:${clock.alarmList[id][1]}`)
+    alert(`alarm for ${clock.alarmList[id][0]}:${clock.alarmList[id][1]}`);
+    render();
   }
 }, 1000);
 

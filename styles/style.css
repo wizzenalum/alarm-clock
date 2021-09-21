@@ -75,7 +75,7 @@ main {
 
 
 #alarm-container {
-  padding: 20px,10px;
+  padding: 20px 10px;
   display: grid;
   gap: 20px;
   grid-template-columns: 1fr;
@@ -225,7 +225,23 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: transparent;
 }
 
-/* responsive ness for mobile compatible */
+/* after alarm is over this class will be added make it noticibale */
+.alarmed {
+
+  background-color: red;
+  /* animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite; */
+  animation: color-change 2s linear 0s infinite alternate;
+}
+@keyframes color-change {
+  from {background-color: rgba(255, 0, 0, 0.575);}
+  to {background-color: rgba(228, 228, 190, 0.644);}
+}
+
+
+
+/* responsiveness for mobile compatible */
 @media only screen and (orientation: portrait) {
   main {
     grid-template-columns: 1fr;
