@@ -11,34 +11,18 @@ This a web application that present the time as in old wall clock way with alarm
 > To know in depth about this application, you can visit my [youtube-video](https://youtu.be/e4N5PMvieXs). \
 > Recreation of the application will need vanila javascript, html, css only.
 
-# Eccomerce-API 
-this API impliments the CRUD for product inventory. It stores name and quantity of the product. it can create, delete, update and delete the product. [Video](youtube.com/wizzenalum) to show demo and setup.
-
 ## How to setup on local machine
-To use this repository on your local machine, you should have [node](https://nodejs.org/en/), npm and [git](https://git-scm.com/downloads). 
-1. check pre-requisits by these.
-```go
-node --version
-npm --version
-git --version
-```
-2. Now clone this repository
+To use this repository on your local machine, you only need one broweser chrome, firefox etc. 
+
+1. Now clone this repository
 ```go
 git clone https://github.com/wizzenalum/alarm-clock.git
 ```
-3. Change directory to Ecomerce-API
+2. Change directory to alarm-clock
 ```go
 cd alarm-clock/
 ```
-
-3. Install dependencies
-```go
-npm install
-```
-4. That's... it  run the application
-```go
-npm start
-```
+3. open index.html file in browser that's it.
 
 
 ### Folder structure
