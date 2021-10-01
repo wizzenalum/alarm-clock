@@ -8,7 +8,7 @@ This a web application that present the time as in old wall clock way with alarm
 
 
 ## For developers
-> To know in depth about this application, you can visit my [youtube-video](https://youtu.be/e4N5PMvieXs). \
+> To know more about this application, you can visit my [youtube-video](https://youtu.be/q5iO9lLytVQ). \
 > Recreation of the application will need vanila javascript, html, css only.
 
 ## How to setup on local machine
